@@ -54,9 +54,9 @@ if str.lower(input("\nDo you want to set a custom tick delay? (y/N) > ")) == "y"
 print(f"\nCreating \"{config}\"...")
 with open(config, mode="w") as file:
     file.write(json.dumps({
-        imageName: imageName,
-        delay: delay,
-        tickDelay: tickDelay
+        "imageName": imageName,
+        "delay": delay,
+        "tickDelay": tickDelay
     }, indent=4))
     file.close()
     print(f"File \"{config}\" was created successfully! This should not be edited manually.")
@@ -64,5 +64,9 @@ with open(config, mode="w") as file:
 runNow = not str.lower(input("\nShould the program run now? (Y/n) > ")) == "n"
 if runNow:
     if os.path.exists("main.exe"):
-        os.system("main.exe")
-    else: print("File \"main.exe\" does not exist!")
+        os.startfile("main.exe")
+        print("Starting virus...")
+        sleep(3)
+    else:
+        print("File \"main.exe\" does not exist!")
+        os.system("@pause && exit")

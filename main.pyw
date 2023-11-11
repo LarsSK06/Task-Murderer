@@ -1,6 +1,7 @@
 import os
 import json
 from time import sleep
+from subprocess import call
 
 config = "settings.json"
 
@@ -61,5 +62,5 @@ while True:
         break
 
 while True:
-    os.system("taskkill /f /im " + imageName)
+    call("taskkill /f /im " + imageName, creationflags=0x08000000)
     sleep(delay)
